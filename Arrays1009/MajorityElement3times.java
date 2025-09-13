@@ -1,4 +1,4 @@
-package Arrays0809;
+package Arrays1009;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,12 +77,18 @@ public class MajorityElement3times {
     private static List<Integer> majorityElement3(int[] arr) {
         int n = arr.length;
         int cnt1=0,cnt2=0;
-        int el1=Integer.MIN_VALUE;
-        int el2 = Integer.MIN_VALUE;
+        int el1 = 0;
+        int el2 = 0;
         List<Integer> ls = new ArrayList<>();
 
         for(int i=0;i<n;i++){
-            if(cnt1==0 && el2!=arr[i]){
+            if(arr[i]==el1){
+                cnt1++;
+            }
+            else if(arr[i]==el2){
+                cnt2++;
+            }
+            else if(cnt1==0 && el2!=arr[i]){
                 el1=arr[i];
                 cnt1=1;
             }
@@ -90,8 +96,6 @@ public class MajorityElement3times {
                 cnt2=1;
                 el2=arr[i];
             }
-            else if(arr[i]==el1)cnt1++;
-            else if(arr[i]==el2)cnt2++;
             else{
                 cnt1--;
                 cnt2--;
